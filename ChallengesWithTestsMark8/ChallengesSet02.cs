@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ChallengesWithTestsMark8
 {
@@ -50,10 +51,12 @@ namespace ChallengesWithTestsMark8
             if (numbers == null)
                 return 0;
             int sum = 0;
-            foreach (var n in numbers)
-                if (n % 2 == 0)
-                    sum += n;
-            return sum;
+            //foreach (var n in numbers)
+            //    if (n % 2 == 0)
+            //        sum += n;
+            //return sum;
+
+            return numbers.Where(x => x % 2 == 0).Sum();
         }
 
         public bool IsSumOdd(List<int> numbers)

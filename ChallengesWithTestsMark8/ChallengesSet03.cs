@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Serialization;
 
 namespace ChallengesWithTestsMark8
 {
@@ -24,22 +26,24 @@ namespace ChallengesWithTestsMark8
         {
             if (password == null)
                 return false;
-            bool isUpper = false;
-            bool isLower = false;
-            bool isNumber = false;
-            foreach(char c in password)
-            {
-                if (char.IsLetter(c))
-                {
-                    if (char.IsUpper(c))
-                        isUpper = true;
-                    else
-                        isLower = true;
-                }
-                if (char.IsDigit(c))
-                    isNumber = true;
-            }
-            return isUpper && isLower && isNumber;
+            //bool isUpper = false;
+            //bool isLower = false;
+            //bool isNumber = false;
+            //foreach(char c in password)
+            //{
+            //    if (char.IsLetter(c))
+            //    {
+            //        if (char.IsUpper(c))
+            //            isUpper = true;
+            //        else
+            //            isLower = true;
+            //    }
+            //    if (char.IsDigit(c))
+            //        isNumber = true;
+            //}
+            //return isUpper && isLower && isNumber;
+
+            return password.Any(x => char.IsUpper(x)) && password.Any(x => char.IsLower(x)) && password.Any(x => char.IsDigit(x));
         }
 
         public char GetFirstLetterOfString(string val)
@@ -79,8 +83,9 @@ namespace ChallengesWithTestsMark8
         {
             var str = new string[words.Length];
             words.CopyTo(str, 0);
-            for(int i = 0; i < words.Length; i++)
+            for (int i = 0; i < words.Length; i++)
                 words[i] = str[i].ToUpper();
+
         }
     }
 }
